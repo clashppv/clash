@@ -54,3 +54,33 @@
     // === ELEMENtY ===
     const pinEl = document.getElementById('pin');
     const okBtn = document.getElementById('ok'
+// Funkce po kliknutí na Odeslat
+okBtn.addEventListener('click', () => {
+  const enteredPin = pinEl.value;
+  const msgEl = document.getElementById('msg');
+  const errEl = document.getElementById('err');
+  const resultEl = document.getElementById('result');
+
+  if (!enteredPin) {
+    errEl.textContent = 'Zadej PIN!';
+    resultEl.style.display = 'none';
+    return;
+  }
+
+  if (enteredPin === PIN) {
+    errEl.textContent = '';
+    msgEl.style.display = 'none';
+    resultEl.style.display = 'block';
+  } else {
+    errEl.textContent = 'Špatný PIN!';
+    resultEl.style.display = 'none';
+  }
+});
+
+// Funkce po kliknutí na Vymazat
+clr.addEventListener('click', () => {
+  pinEl.value = '';
+  document.getElementById('err').textContent = '';
+  document.getElementById('msg').style.display = 'block';
+  document.getElementById('result').style.display = 'none';
+});
